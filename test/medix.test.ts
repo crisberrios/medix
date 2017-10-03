@@ -14,11 +14,7 @@ describe("Core functionality", () => {
     class HomeResponse {
       public welcomeText: string
       constructor(message?: string) {
-        if (message) {
-          this.welcomeText = message
-        } else {
-          this.welcomeText = "Hello World!"
-        }
+        this.welcomeText = message ? message : "Hello World!"
       }
     }
 
