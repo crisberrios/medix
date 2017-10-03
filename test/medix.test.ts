@@ -10,6 +10,7 @@ describe("Core functionality", () => {
       }
     }
 
+    // tslint:disable-next-line:max-classes-per-file
     class HomeResponse {
       public welcomeText: string
       constructor(message?: string) {
@@ -42,6 +43,7 @@ describe("Core functionality", () => {
   })
 
   it("Should handle primitives", () => {
+    // tslint:disable-next-line:max-classes-per-file
     class HomeQuery {
       public message: string
 

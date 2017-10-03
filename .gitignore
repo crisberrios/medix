@@ -1,3 +1,4 @@
 node_modules
 examples
 launch.json
+.DS_Store
