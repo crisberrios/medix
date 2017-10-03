@@ -5,7 +5,8 @@
   ],
   "jsRules": {},
   "rules": {
-      "ban-types" : []
+      "ban-types" : false,
+      "semicolon" : false
   },
   "rulesDirectory": []
 }
