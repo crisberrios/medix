@@ -923,6 +923,9 @@ img { max-width: 100%; }
 				</li>
 			</ul>
 		</li>
+		<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+			<a href="_medix_.mediatorquery.html" class="tsd-kind-icon">Mediator<wbr>Query</a>
+		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 			<a href="../interfaces/_medix_.iconstructable.html" class="tsd-kind-icon">IConstructable</a>
 		</li>
@@ -931,6 +934,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 			<a href="../interfaces/_medix_.imediator.html" class="tsd-kind-icon">IMediator</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+			<a href="../interfaces/_medix_.imediatorquery.html" class="tsd-kind-icon">IMediator<wbr>Query</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 			<a href="../interfaces/_medix_.inewinstance.html" class="tsd-kind-icon">INew<wbr>Instance</a>
@@ -984,7 +990,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">registry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_medix_.ihandler.html" class="tsd-signature-type">IHandler</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/crisberrios/medix//blob/eca9072/src/medix.ts#L25">medix.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/crisberrios/medix//blob/dc8c5a8/src/medix.ts#L41">medix.ts:41</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1002,7 +1008,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/_medix_.imediator.html">IMediator</a>.<a href="../interfaces/_medix_.imediator.html#register">register</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/eca9072/src/medix.ts#L26">medix.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/dc8c5a8/src/medix.ts#L42">medix.ts:42</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1019,14 +1025,36 @@ img { max-width: 100%; }
 				<a name="send" class="tsd-anchor"></a>
 				<h3>send</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<li class="tsd-signature tsd-kind-icon">send&lt;T&gt;<span class="tsd-signature-symbol">(</span>command<span class="tsd-signature-symbol">: </span><a href="../interfaces/_medix_.imediatorquery.html" class="tsd-signature-type">IMediatorQuery</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					<li class="tsd-signature tsd-kind-icon">send&lt;T&gt;<span class="tsd-signature-symbol">(</span>command<span class="tsd-signature-symbol">: </span><a href="../interfaces/_medix_.iconstructable.html" class="tsd-signature-type">IConstructable</a>, responseType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_medix_.inewinstance.html" class="tsd-signature-type">INewInstance</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					<li class="tsd-signature tsd-kind-icon">send<span class="tsd-signature-symbol">(</span>command<span class="tsd-signature-symbol">: </span><a href="../interfaces/_medix_.iconstructable.html" class="tsd-signature-type">IConstructable</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/dc8c5a8/src/medix.ts#L60">medix.ts:60</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>T</h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>command: <a href="../interfaces/_medix_.imediatorquery.html" class="tsd-signature-type">IMediatorQuery</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+					</li>
+					<li class="tsd-description">
+						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/_medix_.imediator.html">IMediator</a>.<a href="../interfaces/_medix_.imediator.html#send">send</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/eca9072/src/medix.ts#L36">medix.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/dc8c5a8/src/medix.ts#L61">medix.ts:61</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -1045,6 +1073,21 @@ img { max-width: 100%; }
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+					</li>
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Implementation of <a href="../interfaces/_medix_.imediator.html">IMediator</a>.<a href="../interfaces/_medix_.imediator.html#send">send</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/crisberrios/medix//blob/dc8c5a8/src/medix.ts#L62">medix.ts:62</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>command: <a href="../interfaces/_medix_.iconstructable.html" class="tsd-signature-type">IConstructable</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
 			</section>

@@ -22,7 +22,22 @@ export interface INewInstance<T> extends IConstructable {
   new (): T
 }
 
-export default class Mediator implements IMediator {
+export interface IMediatorQuery<T> {
+  getResponseType(): INewInstance<T>
+}
+
+export class MediatorQuery<T> implements IMediatorQuery<T> {
+  private responseType: INewInstance<T>
+  constructor(responseType: INewInstance<T>) {
+    this.responseType = responseType
+  }
+  public getResponseType() {
+    return this.responseType
+  }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class Mediator implements IMediator {
   private registry: Map<Function, Map<Function, IHandler>> = new Map()
   public register(data: IRegisterHandler) {
     const responseMap = this.registry.get(data.commandConstructor)
@@ -42,29 +57,42 @@ export default class Mediator implements IMediator {
     return
   }
 
-  public send(command: IConstructable): void
+  public send<T>(command: IMediatorQuery<T>): T
   public send<T>(command: IConstructable, responseType: INewInstance<T>): T
+  public send(command: IConstructable): void
   public send<T>(
     command: IConstructable,
     responseType?: INewInstance<T>
   ): T | void {
+    const noHandler = (type: string = "handler") => {
+      throw new Error(`No handler exists for this ${type} type`)
+    }
     const responseMap = this.registry.get(command.constructor)
     if (!responseMap) {
-      throw new Error("No handler definitions for this command type")
+      noHandler("command")
+      return
+    }
+    if (!responseType && (command as IMediatorQuery<T>).getResponseType) {
+      const handler = responseMap.get(
+        (command as IMediatorQuery<T>).getResponseType()
+      )
+      if (handler) {
+        return handler.handle(command) as T
+      }
+      noHandler()
     }
     if (!responseType) {
       const handler = responseMap.get(command.constructor)
       if (handler) {
         handler.handle(command)
+        return
       }
-      return
+      noHandler()
     }
-    if (responseType) {
-      const handler = responseMap.get(responseType)
-      if (handler) {
-        return handler.handle(command) as T
-      }
-      throw new Error("No handler exists for this response type")
+    const responseHandler = responseMap.get(responseType as INewInstance<T>)
+    if (responseHandler) {
+      return responseHandler.handle(command) as T
     }
+    noHandler()
   }
 }
