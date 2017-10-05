@@ -4,59 +4,64 @@
 	(factory((global.medix = {})));
 }(this, (function (exports) { 'use strict';
 
-class MediatorQuery {
-    constructor(responseType) {
+var MediatorQuery = (function () {
+    function MediatorQuery(responseType) {
         this.responseType = responseType;
     }
-    getResponseType() {
+    MediatorQuery.prototype.getResponseType = function () {
         return this.responseType;
-    }
-}
+    };
+    return MediatorQuery;
+}());
 // tslint:disable-next-line:max-classes-per-file
-class Mediator {
-    constructor() {
+var Mediator = (function () {
+    function Mediator() {
         this.registry = new Map();
     }
-    register(data) {
-        const responseMap = this.registry.get(data.commandConstructor);
+    Mediator.prototype.register = function (data) {
+        var responseMap = this.registry.get(data.commandConstructor);
         if (!responseMap) {
-            const newResponseMap = new Map();
+            var newResponseMap = new Map();
             newResponseMap.set(data.responseConstructor || data.commandConstructor, data.handler);
             this.registry.set(data.commandConstructor, newResponseMap);
             return;
         }
         responseMap.set(data.responseConstructor || data.commandConstructor, data.handler);
         return;
-    }
-    send(command, responseType) {
-        const noHandler = (type = 'handler') => { throw new Error(`No handler exists for this ${type} type`); };
-        const responseMap = this.registry.get(command.constructor);
+    };
+    Mediator.prototype.send = function (command, responseType) {
+        var noHandler = function (type) {
+            if (type === void 0) { type = "handler"; }
+            throw new Error("No handler exists for this " + type + " type");
+        };
+        var responseMap = this.registry.get(command.constructor);
         if (!responseMap) {
-            noHandler('command');
+            noHandler("command");
             return;
         }
         if (!responseType && command.getResponseType) {
-            const handler = responseMap.get(command.getResponseType());
+            var handler = responseMap.get(command.getResponseType());
             if (handler) {
                 return handler.handle(command);
             }
             noHandler();
         }
         if (!responseType) {
-            const handler = responseMap.get(command.constructor);
+            var handler = responseMap.get(command.constructor);
             if (handler) {
                 handler.handle(command);
                 return;
             }
             noHandler();
         }
-        const responseHandler = responseMap.get(responseType);
+        var responseHandler = responseMap.get(responseType);
         if (responseHandler) {
             return responseHandler.handle(command);
         }
         noHandler();
-    }
-}
+    };
+    return Mediator;
+}());
 
 exports.MediatorQuery = MediatorQuery;
 exports.Mediator = Mediator;
