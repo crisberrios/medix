@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1507178574068" clover="3.2.0">
-  <project timestamp="1507178574068" name="All files">
+<coverage generated="1507178675903" clover="3.2.0">
+  <project timestamp="1507178675904" name="All files">
     <metrics statements="40" coveredstatements="27" conditionals="22" coveredconditionals="10" methods="8" coveredmethods="7" elements="70" coveredelements="44" complexity="0" loc="40" ncloc="40" packages="1" files="1" classes="1">
       <file name="medix.ts" path="/Users/cristianberrios/medix/src/medix.ts">
         <metrics statements="40" coveredstatements="27" conditionals="22" coveredconditionals="10" methods="8" coveredmethods="7"/>
